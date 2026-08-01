@@ -1,0 +1,72 @@
+import { Leaf, ShieldCheck, Zap } from 'lucide-react';
+import { FeatureCard } from '../ui/FeatureCard';
+
+export const HeroSection = () => {
+    return (
+        <section
+            id="beranda"
+            className="relative min-h-screen flex items-center justify-center bg-cover bg-center text-black pt-24 pb-16 overflow-hidden"
+            style={{
+
+            }}
+        >
+            <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] z-0 pointer-events-none">
+                <svg
+                    className="w-full h-full text-white"
+                    viewBox="0 0 800 900"
+                    preserveAspectRatio="none"
+                    fill="currentColor"
+                >
+                    <path d="M 0 0 L 680 0 Q 780 250 560 480 T 680 900 L 0 900 Z" />
+                </svg>
+            </div>
+
+            {/* 2. KONTEN UTAMA */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div className="space-y-6 text-left">
+                        <h1 className="text-black text-4xl sm:text-4xl lg:text-4xl font-bold tracking-tight leading-tight">
+                            Bandeng Presto <br />
+                            <span className="text-black">Duri Lunak & Siap Goreng</span>
+                        </h1>
+
+                        <p className="text-gray-800 text-sm sm:text-md leading-relaxed max-w-xl">
+                            Solusi praktis sajian lezat keluarga. Dibuat dari bahan pilihan berkualitas, diolah dengan bumbu rempah alami yang meresap hingga ke dalam, siap digoreng atau dikukus kapan saja.
+                        </p>
+
+                        <div className="grid grid-cols-3 gap-5 pt-2 max-w-xl">
+                            <FeatureCard
+                                icon={<Leaf className="w-8 h-8 text-black" />}
+                                title="100% Bahan"
+                                subtitle="Organik & Alami"
+                            />
+                            <FeatureCard
+                                icon={<ShieldCheck className="w-8 h-8 text-black" />}
+                                title="Tanpa Pengawet"
+                                subtitle="Higenis & Sehat"
+                            />
+                            <FeatureCard
+                                icon={<Zap className="w-8 h-8 text-black" />}
+                                title="Siap Saji"
+                                subtitle="Digoreng / Dikukus"
+                            />
+                        </div>
+                    </div>
+
+                    {/* SISI KANAN: Gambar / Produk */}
+                    {/* <div className="flex justify-center items-center">
+            <div className="w-full max-w-md aspect-4/3 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-amber-950/10 flex items-center justify-center">
+              <img 
+                src={heroImg} 
+                alt="Bandeng Presto Sanjaya" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+              />
+            </div>
+          </div> */}
+
+                </div>
+            </div>
+        </section>
+    );
+};
