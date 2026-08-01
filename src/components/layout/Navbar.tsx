@@ -1,19 +1,34 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import logoImg from '../../assets/images/BANDENG.png';
-import { Menu, X } from "lucide-react";
-
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("");
+    const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const { language, setLanguage, t } = useLanguage();
 
     const navLinks = [
-        { name: 'Tentang Kami', href: '#tentang' },
-        { name: 'Pilih Kami', href: '#pilih-kami' },
-        { name: 'Katalog Menu', href: '#produk' },
-        { name: 'Lokasi & Kontak', href: '#lokasi' },
+        { name: t.nav.about, href: '#tentang' },
+        { name: t.nav.whyUs, href: '#pilih-kami' },
+        { name: t.nav.catalog, href: '#produk' },
+        { name: t.nav.location, href: '#lokasi' },
     ];
+
+    // Klik di luar dropdown untuk menutup dropdown
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setLangDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -39,14 +54,13 @@ export const Navbar = () => {
         };
 
         window.addEventListener("scroll", handleScroll);
-        handleScroll(); // Jalankan sekali saat komponen di-mount
+        handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [language]);
 
     return (
         <>
-            {/* 1. HEADER (Transparan di Hero, memiliki background saat di-scroll) */}
             <header
                 className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
                     scrolled
@@ -63,29 +77,126 @@ export const Navbar = () => {
                             </div>
                         </a>
 
-                        {/* Desktop Nav Links */}
-                        <nav className="hidden md:flex items-center gap-8">
-                            {navLinks.map((link) => {
-                                const isActive = activeSection === link.href;
-                                return (
-                                    <a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setActiveSection(link.href)}
-                                        className={`relative py-1 text-sm transition-colors after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 ${
-                                            isActive
-                                                ? "text-amber-800 font-bold after:w-full"
-                                                : "text-black font-medium hover:text-amber-800 after:w-0 hover:after:w-full"
-                                        }`}
-                                    >
-                                        {link.name}
-                                    </a>
-                                );
-                            })}
-                        </nav>
+                        <div className="hidden md:flex items-center gap-8">
+                            <nav className="flex items-center gap-8">
+                                {navLinks.map((link) => {
+                                    const isActive = activeSection === link.href;
+                                    return (
+                                        <a
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => setActiveSection(link.href)}
+                                            className={`relative py-1 text-sm transition-colors after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 ${
+                                                isActive
+                                                    ? "text-amber-800 font-bold after:w-full"
+                                                    : "text-black font-medium hover:text-amber-800 after:w-0 hover:after:w-full"
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </a>
+                                    );
+                                })}
+                            </nav>
+
+                            {/* Dropdown Language Switcher (Desktop) */}
+                            <div className="relative" ref={dropdownRef}>
+                                <button
+                                    onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                                    className="flex items-center gap-2 border border-black/40 hover:border-black rounded-full px-3.5 py-1.5 text-xs font-bold text-black bg-white/80 hover:bg-white backdrop-blur-md transition-all shadow-xs cursor-pointer"
+                                >
+                                    <img
+                                        src={language === 'id' ? "https://flagcdn.com/w40/id.png" : "https://flagcdn.com/w40/us.png"}
+                                        alt={language}
+                                        className="w-4 h-3 object-cover rounded-xs shadow-2xs shrink-0"
+                                    />
+                                    <span>{language.toUpperCase()}</span>
+                                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
+                                </button>
+
+                                {/* Dropdown Menu Floating Card */}
+                                {langDropdownOpen && (
+                                    <div className="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-100 rounded-2xl shadow-xl p-1.5 z-50 text-left animate-in fade-in zoom-in-95 duration-150">
+                                        <button
+                                            onClick={() => {
+                                                setLanguage('id');
+                                                setLangDropdownOpen(false);
+                                            }}
+                                            className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                                                language === 'id'
+                                                    ? 'bg-sky-50 text-sky-600 font-extrabold'
+                                                    : 'text-gray-700 hover:bg-gray-50 font-medium'
+                                            }`}
+                                        >
+                                            <img src="https://flagcdn.com/w40/id.png" alt="Indonesia" className="w-4.5 h-3 object-cover rounded-xs shadow-2xs shrink-0" />
+                                            <span>Indonesia</span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                setLanguage('en');
+                                                setLangDropdownOpen(false);
+                                            }}
+                                            className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs rounded-xl transition-all cursor-pointer ${
+                                                language === 'en'
+                                                    ? 'bg-sky-50 text-sky-600 font-extrabold'
+                                                    : 'text-gray-700 hover:bg-gray-50 font-medium'
+                                            }`}
+                                        >
+                                            <img src="https://flagcdn.com/w40/us.png" alt="English" className="w-4.5 h-3 object-cover rounded-xs shadow-2xs shrink-0" />
+                                            <span>English</span>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
 
                         {/* Mobile Menu Button */}
-                        <div className="md:hidden flex items-center">
+                        <div className="md:hidden flex items-center gap-3">
+                            {/* Mobile Dropdown Language Switcher */}
+                            <div className="relative">
+                                <button
+                                    onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                                    className="flex items-center gap-1.5 border border-black/40 rounded-full px-2.5 py-1 text-xs font-bold text-black bg-white/80 shadow-xs"
+                                >
+                                    <img
+                                        src={language === 'id' ? "https://flagcdn.com/w40/id.png" : "https://flagcdn.com/w40/us.png"}
+                                        alt={language}
+                                        className="w-4 h-3 object-cover rounded-xs shrink-0"
+                                    />
+                                    <span>{language.toUpperCase()}</span>
+                                    <ChevronDown className="w-3 h-3" />
+                                </button>
+
+                                {langDropdownOpen && (
+                                    <div className="absolute right-0 top-full mt-2 w-36 bg-white border border-gray-100 rounded-2xl shadow-xl p-1.5 z-50 text-left">
+                                        <button
+                                            onClick={() => {
+                                                setLanguage('id');
+                                                setLangDropdownOpen(false);
+                                            }}
+                                            className={`w-full flex items-center gap-2 px-2.5 py-2 text-xs rounded-xl ${
+                                                language === 'id' ? 'bg-sky-50 text-sky-600 font-bold' : 'text-gray-700'
+                                            }`}
+                                        >
+                                            <img src="https://flagcdn.com/w40/id.png" alt="Indonesia" className="w-4 h-3 object-cover rounded-xs shrink-0" />
+                                            <span>Indonesia</span>
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                setLanguage('en');
+                                                setLangDropdownOpen(false);
+                                            }}
+                                            className={`w-full flex items-center gap-2 px-2.5 py-2 text-xs rounded-xl ${
+                                                language === 'en' ? 'bg-sky-50 text-sky-600 font-bold' : 'text-gray-700'
+                                            }`}
+                                        >
+                                            <img src="https://flagcdn.com/w40/us.png" alt="English" className="w-4 h-3 object-cover rounded-xs shrink-0" />
+                                            <span>English</span>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                                 className={`p-2 rounded-lg focus:outline-none transition-colors ${
@@ -93,7 +204,7 @@ export const Navbar = () => {
                                 }`}
                                 aria-label="Toggle Menu"
                             >
-                                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-black" />}
                             </button>
                         </div>
                     </div>
