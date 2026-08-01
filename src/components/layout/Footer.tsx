@@ -3,9 +3,11 @@ import halalIcon from '../../assets/icons/halal.svg';
 import { STORE_CONFIG } from '../../data/config';
 import { MapPin, Phone } from 'lucide-react';
 import { whatsappLink } from '../../utils/format';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-[#ecffdb] text-black pt-16 pb-8">
@@ -24,40 +26,40 @@ export const Footer = () => {
             </div>
 
             <p className="text-black text-sm leading-relaxed max-w-sm">
-              {STORE_CONFIG.tagline}. Menyajikan aneka olahan bandeng presto duri lunak & ayam ungkep bumbu rempah alami tanpa pengawet.
+              {t.footer.tagline}
             </p>
 
             <div className="pt-1">
               <div className="inline-flex items-center gap-2x px-3.5 py-1.5 rounded-full text-xs font-bold text-emerald-950 shadow-xs">
                 <img src={halalIcon} alt="Halal Indonesia" className="w-15 h-15 object-contain" />
-                <span className='font-size-lg'>Tersertifikasi Halal MUI</span>
+                <span className='font-size-lg'>{t.footer.halalCert}</span>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-3 space-y-4 text-left">
             <h4 className="text-base font-bold text-black tracking-wide uppercase">
-              Navigasi Cepat
+              {t.footer.quickNav}
             </h4>
             <ul className="space-y-2.5 text-sm text-black">
               <li>
                 <a href="#tentang" className="hover:text-amber-600 transition-colors">
-                  Tentang Kami
+                  {t.nav.about}
                 </a>
               </li>
               <li>
                 <a href="#pilih-kami" className="hover:text-amber-600 transition-colors">
-                  Keunggulan Kami
+                  {t.nav.whyUs}
                 </a>
               </li>
               <li>
                 <a href="#katalog" className="hover:text-amber-600 transition-colors">
-                  Katalog Menu Produk
+                  {t.nav.catalog}
                 </a>
               </li>
               <li>
                 <a href="#lokasi" className="hover:text-amber-600 transition-colors">
-                  Lokasi Toko & Kontak
+                  {t.nav.location}
                 </a>
               </li>
             </ul>
@@ -65,7 +67,7 @@ export const Footer = () => {
 
           <div className="lg:col-span-2 space-y-4 text-left">
             <h4 className="text-base font-bold text-black tracking-wide uppercase">
-              Produk Kami
+              {t.footer.ourProducts}
             </h4>
             <ul className="space-y-2.5 text-sm text-black">
               <li>Bandeng Presto Duri Lunak</li>
@@ -77,7 +79,7 @@ export const Footer = () => {
 
           <div className="lg:col-span-3 space-y-4 text-left">
             <h4 className="text-base font-bold text-black tracking-wide uppercase">
-              Hubungi Kami
+              {t.footer.contactUs}
             </h4>
             <ul className="space-y-3 text-sm text-black">
               <li className="flex items-start gap-2.5">

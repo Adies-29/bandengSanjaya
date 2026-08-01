@@ -1,3 +1,5 @@
+
+import { FeatureCard } from '../ui/FeatureCard';
 import { useState, useEffect } from 'react';
 import { ShieldCheck, Flame, PackageCheck, Award, Zap, Leaf } from 'lucide-react';
 import bandengImg from '../../assets/images/bandeng-presto.png';
@@ -7,12 +9,10 @@ import ayam1Img from '../../assets/images/Ayam-ungkep.png';
 import bandeng2Img from '../../assets/images/bandeng 2.webp';
 import bandeng3Img from '../../assets/images/bandeng-presto-5.png';
 import storeImg from '../../assets/images/store.webp';
-
-
-import { STORE_CONFIG } from '../../data/config';
-import { FeatureCard } from '../ui/FeatureCard';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const PilihSection = () => {
+  const { t } = useLanguage();
   // Daftar gambar produk yang akan bergeser di tengah
   const productImages = [bandengImg, ayamImg, pepesImg, ayam1Img, bandeng2Img, bandeng3Img, storeImg,];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,10 +33,10 @@ export const PilihSection = () => {
         {/* Header Judul & Deskripsi */}
         <div className="space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold text-black">
-            Kenapa Harus Memilih {STORE_CONFIG.name}?
+            {t.whyUs.title}
           </h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-xl mx-auto">
-            Keunggulan bandeng duri lunak & kuliner pilihan keluarga Indonesia.
+            {t.whyUs.subtitle}
           </p>
         </div>
 
@@ -46,19 +46,19 @@ export const PilihSection = () => {
           {/* SISI KIRI: 3 FeatureCard */}
           <div className="flex flex-col justify-between space-y-4">
             <FeatureCard
-              icon={<ShieldCheck className="w-8 h-8 text-black" />}
-              title="100% Rempah Alami"
-              subtitle="Diolah menggunakan racikan bumbu rempah murni tanpa pengawet sintetis."
+              icon={<Flame className="w-8 h-8 text-black" />}
+              title={t.whyUs.f1Title}
+              subtitle={t.whyUs.f1Sub}
             />
             <FeatureCard
-              icon={<Flame className="w-8 h-8 text-black" />}
-              title="Duri Lunak Empuk"
-              subtitle="Dipresto dengan suhu dan tekanan tinggi, membuat duri empuk sehingga aman dikonsumsi anak-anak."
+              icon={<ShieldCheck className="w-8 h-8 text-black" />}
+              title={t.whyUs.f2Title}
+              subtitle={t.whyUs.f2Sub}
             />
             <FeatureCard
               icon={<Zap className="w-8 h-8 text-black" />}
-              title="Siap Saji"
-              subtitle="Cukup digoreng atau dikukus beberapa menit, langsung siap disantap."
+              title={t.whyUs.f5Title}
+              subtitle={t.whyUs.f5Sub}
             />
           </div>
 
@@ -70,8 +70,11 @@ export const PilihSection = () => {
                   key={index}
                   src={img}
                   alt={`Produk ${index + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"
-                    }`}
+                  className={`absolute inset-0 w-full h-full object-cover ${
+                    img === storeImg ? 'object-left' : 'object-center'
+                  } transition-opacity duration-1000 ease-in-out ${
+                    index === currentIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"
+                  }`}
                 />
               ))}
 
@@ -94,18 +97,18 @@ export const PilihSection = () => {
           <div className="flex flex-col justify-between space-y-4">
             <FeatureCard
               icon={<PackageCheck className="w-8 h-8 text-black" />}
-              title="Kemasan Vacuum"
-              subtitle="Dikemas kedap udara (vacuum sealer) untuk menjaga kesegaran rasa bumbu & daya tahan di perjalanan."
+              title={t.whyUs.f4Title}
+              subtitle={t.whyUs.f4Sub}
             />
             <FeatureCard
               icon={<Award className="w-8 h-8 text-black" />}
-              title="Halal MUI"
-              subtitle="Seluruh proses produksi telah memenuhi standar kualifikasi & tersertifikasi Halal MUI."
+              title={t.whyUs.f3Title}
+              subtitle={t.whyUs.f3Sub}
             />
             <FeatureCard
               icon={<Leaf className="w-8 h-8 text-black" />}
-              title="100% Bahan"
-              subtitle="Bahan baku dipilih dari sumber terpercaya dengan standar kualitas tinggi."
+              title={t.whyUs.f6Title}
+              subtitle={t.whyUs.f6Sub}
             />
           </div>
 

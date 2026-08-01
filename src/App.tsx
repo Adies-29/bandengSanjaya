@@ -1,5 +1,6 @@
 
 import './App.css'
+import { LanguageProvider } from './context/LanguageContext';
 import { FloatingWhatsapp } from './components/layout/FloatingWhatsapp';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -12,28 +13,30 @@ import { LocationSection } from './components/sections/Location';
 function App() {
 
   return (
-    <div className="min-h-screen text-black flex flex-col justify-between">
-      <Navbar />
+    <LanguageProvider>
+      <div className="min-h-screen text-black flex flex-col justify-between">
+        <Navbar />
 
-      <main className="grow">
-        {/* Banner Utama */}
-        <HeroSection />
-        {/* Section Tentang Kami */}
-        <AboutSection/>
+        <main className="grow">
+          {/* Banner Utama */}
+          <HeroSection />
+          {/* Section Tentang Kami */}
+          <AboutSection/>
 
-        <PilihSection />
-        {/* Katalog Produk Menu */}
-        <ProductsSection />
+          <PilihSection />
+          {/* Katalog Produk Menu */}
+          <ProductsSection />
 
-        <LocationSection/>
-      </main>
+          <LocationSection/>
+        </main>
 
-      {/* Footer Website */}
-      <Footer />
+        {/* Footer Website */}
+        <Footer />
 
-      {/* 3. Tombol WA Melayang di Kanan Bawah */}
-      <FloatingWhatsapp />
-    </div>
+        {/* 3. Tombol WA Melayang di Kanan Bawah */}
+        <FloatingWhatsapp />
+      </div>
+    </LanguageProvider>
   );
 }
 

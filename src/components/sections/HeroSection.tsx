@@ -1,14 +1,14 @@
 import { Leaf, ShieldCheck, Zap } from 'lucide-react';
 import { FeatureCard } from '../ui/FeatureCard';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const HeroSection = () => {
+    const { t } = useLanguage();
+
     return (
         <section
             id="beranda"
             className="relative min-h-screen flex items-center justify-center bg-cover bg-center text-black pt-24 pb-16 overflow-hidden"
-            style={{
-
-            }}
         >
             <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] z-0 pointer-events-none">
                 <svg
@@ -27,29 +27,29 @@ export const HeroSection = () => {
 
                     <div className="space-y-6 text-left">
                         <h1 className="text-black text-4xl sm:text-4xl lg:text-4xl font-bold tracking-tight leading-tight">
-                            Bandeng Presto <br />
-                            <span className="text-black">Duri Lunak & Siap Goreng</span>
+                            {t.hero.title1} <br />
+                            <span className="text-black">{t.hero.title2}</span>
                         </h1>
 
                         <p className="text-gray-800 text-sm sm:text-md leading-relaxed max-w-xl">
-                            Solusi praktis sajian lezat keluarga. Dibuat dari bahan pilihan berkualitas, diolah dengan bumbu rempah alami yang meresap hingga ke dalam, siap digoreng atau dikukus kapan saja.
+                            {t.hero.subtitle}
                         </p>
 
                         <div className="grid grid-cols-3 gap-5 pt-2 max-w-xl">
                             <FeatureCard
                                 icon={<Leaf className="w-8 h-8 text-black" />}
-                                title="100% Bahan"
-                                subtitle="Organik & Alami"
+                                title={t.hero.feature1Title}
+                                subtitle={t.hero.feature1Sub}
                             />
                             <FeatureCard
                                 icon={<ShieldCheck className="w-8 h-8 text-black" />}
-                                title="Tanpa Pengawet"
-                                subtitle="Higenis & Sehat"
+                                title={t.hero.feature2Title}
+                                subtitle={t.hero.feature2Sub}
                             />
                             <FeatureCard
                                 icon={<Zap className="w-8 h-8 text-black" />}
-                                title="Siap Saji"
-                                subtitle="Digoreng / Dikukus"
+                                title={t.hero.feature3Title}
+                                subtitle={t.hero.feature3Sub}
                             />
                         </div>
                     </div>

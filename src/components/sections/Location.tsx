@@ -1,12 +1,13 @@
 
-
 import React, { useState } from 'react';
 import { MapPin, Phone, Send, Lock, MessageCircle } from 'lucide-react';
 import { STORE_CONFIG } from '../../data/config';
 import { whatsappLink } from '../../utils/format';
 import { Input, Textarea } from '../ui/Input';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const LocationSection = () => {
+  const { t } = useLanguage();
   // Ambil Web3Forms Access Key dari file .env (tanpa hardcode di file komponen)
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
@@ -71,7 +72,7 @@ export const LocationSection = () => {
     
         <div className="space-y-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Lokasi Kami
+            {t.location.title}
           </h2>
 
 
@@ -93,13 +94,13 @@ export const LocationSection = () => {
           {/* SISI KIRI: INFORMASI KONTAK (Col 5) */}
           <div className="lg:col-span-5 space-y-8 text-left">
             <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">
-              Informasi Kontak
+              {t.location.contactInfo}
             </h3>
 
             {/* Kantor / Toko Utama */}
             <div className="space-y-5">
               <h4 className="font-bold text-gray-900 text-lg">
-                Toko Utama {STORE_CONFIG.name}
+                {t.location.storeTitle}
               </h4>
 
               {/* Alamat */}
@@ -136,7 +137,7 @@ export const LocationSection = () => {
                 className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300"
               >
                 <MapPin className="w-5 h-5" />
-                <span>Petunjuk Arah di Google Maps</span>
+                <span>{t.location.directions}</span>
               </a>
             </div>
 
@@ -173,7 +174,7 @@ export const LocationSection = () => {
 
             <div className={isFormLocked ? "opacity-30 pointer-events-none select-none" : ""}>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-6">
-                Kirimkan Kami Pesan
+                {t.location.sendMessage}
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -196,7 +197,7 @@ export const LocationSection = () => {
                     type="text"
                     name="name"
                     required
-                    placeholder="Nama Anda"
+                    placeholder={t.location.formName}
                   />
 
                   {/* Input No HP */}
@@ -204,7 +205,7 @@ export const LocationSection = () => {
                     type="text"
                     name="phone"
                     required
-                    placeholder="No. WhatsApp / HP"
+                    placeholder={t.location.formPhone}
                   />
                 </div>
 
@@ -212,7 +213,7 @@ export const LocationSection = () => {
                 <Input
                   type="text"
                   name="subject"
-                  placeholder="Subjek (Pemesanan / Tanya Stock)"
+                  placeholder={t.location.formSubject}
                 />
 
                 {/* Input Pesan */}
@@ -220,7 +221,7 @@ export const LocationSection = () => {
                   name="message"
                   rows={4}
                   required
-                  placeholder="Pesan Anda..."
+                  placeholder={t.location.formMessage}
                 />
 
                 {/* Submit Button */}
@@ -231,7 +232,7 @@ export const LocationSection = () => {
                     className="inline-flex items-center justify-center gap-2 bg-[#1e1e1e] hover:bg-black disabled:bg-gray-400 text-white font-bold px-8 py-3.5 rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
-                    <span>{isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}</span>
+                    <span>{isSubmitting ? t.location.formSending : t.location.formSubmit}</span>
                   </button>
                 </div>
               </form>
