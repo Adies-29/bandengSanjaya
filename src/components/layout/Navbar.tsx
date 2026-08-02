@@ -71,10 +71,8 @@ export const Navbar = () => {
                 <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
-                        <a href="#beranda" className="flex items-center gap-3 group">
-                            <div className="w-32 h-24 overflow-hidden flex items-center justify-center text-amber-950 group-hover:scale-105 transition-transform">
-                                <img src={logoImg} alt="Logo Bandeng Sanjaya" className="object-cover" />
-                            </div>
+                        <a href="#beranda" className="flex items-center gap-2 group">
+                            <img src={logoImg} alt="Logo Bandeng Sanjaya" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
                         </a>
 
                         <div className="hidden md:flex items-center gap-8">
@@ -151,17 +149,17 @@ export const Navbar = () => {
                         </div>
 
                         {/* Mobile Menu Button */}
-                        <div className="md:hidden flex items-center gap-3">
+                        <div className="md:hidden flex items-center gap-2">
                             {/* Mobile Dropdown Language Switcher */}
                             <div className="relative">
                                 <button
                                     onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                                    className="flex items-center gap-1.5 border border-black/40 rounded-full px-2.5 py-1 text-xs font-bold text-black bg-white/80 shadow-xs"
+                                    className="flex items-center gap-1 border border-black/30 rounded-full px-2 py-1 text-[11px] font-bold text-black bg-white/90 shadow-2xs"
                                 >
                                     <img
                                         src={language === 'id' ? "https://flagcdn.com/w40/id.png" : "https://flagcdn.com/w40/us.png"}
                                         alt={language}
-                                        className="w-4 h-3 object-cover rounded-xs shrink-0"
+                                        className="w-3.5 h-2.5 object-cover rounded-xs shrink-0"
                                     />
                                     <span>{language.toUpperCase()}</span>
                                     <ChevronDown className="w-3 h-3" />
@@ -199,12 +197,12 @@ export const Navbar = () => {
 
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className={`p-2 rounded-lg focus:outline-none transition-colors ${
-                                    scrolled ? "text-black" : "text-white"
+                                className={`p-1.5 rounded-lg focus:outline-none transition-colors ${
+                                    scrolled ? "text-black" : "text-black"
                                 }`}
                                 aria-label="Toggle Menu"
                             >
-                                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-black" />}
+                                {mobileMenuOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
                             </button>
                         </div>
                     </div>
@@ -224,15 +222,40 @@ export const Navbar = () => {
                     }`}
             >
                 {/* Header Sidebar Drawer */}
-                <div className="flex items-center justify-between pb-4 border-b border-black">
-                    <span className="font-bold text-black text-lg">Menu Navigation</span>
+                <div className="flex items-center justify-between pb-4 border-b border-black/10">
+                    <span className="font-bold text-black text-lg">Menu</span>
                     <button
                         onClick={() => setMobileMenuOpen(false)}
-                        className="p-2 rounded-lg text-black focus:outline-none"
+                        className="p-1 rounded-lg text-black focus:outline-none"
                         aria-label="Close Menu"
                     >
                         <X className="w-6 h-6" />
                     </button>
+                </div>
+
+                {/* Language Selector inside Drawer */}
+                <div className="mt-4 flex items-center justify-between bg-white/70 p-2 rounded-2xl border border-black/10">
+                    <span className="text-xs font-bold text-gray-700 pl-2">Bahasa:</span>
+                    <div className="flex items-center gap-1">
+                        <button
+                            onClick={() => setLanguage('id')}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                language === 'id' ? 'bg-emerald-700 text-white shadow-xs' : 'text-gray-700 hover:bg-gray-200/50'
+                            }`}
+                        >
+                            <img src="https://flagcdn.com/w40/id.png" alt="ID" className="w-4 h-3 object-cover rounded-2xs" />
+                            ID
+                        </button>
+                        <button
+                            onClick={() => setLanguage('en')}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                                language === 'en' ? 'bg-emerald-700 text-white shadow-xs' : 'text-gray-700 hover:bg-gray-200/50'
+                            }`}
+                        >
+                            <img src="https://flagcdn.com/w40/us.png" alt="EN" className="w-4 h-3 object-cover rounded-2xs" />
+                            EN
+                        </button>
+                    </div>
                 </div>
 
                 <nav className="mt-6 flex flex-col space-y-2">

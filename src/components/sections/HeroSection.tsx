@@ -1,6 +1,7 @@
 import { Leaf, ShieldCheck, Zap } from 'lucide-react';
 import { FeatureCard } from '../ui/FeatureCard';
 import { useLanguage } from '../../context/LanguageContext';
+import { FadeIn } from '../ui/FadeIn';
 
 export const HeroSection = () => {
     const { t } = useLanguage();
@@ -21,9 +22,8 @@ export const HeroSection = () => {
                 </svg>
             </div>
 
-            {/* 2. KONTEN UTAMA */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <FadeIn className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <div className="space-y-6 text-left">
                         <h1 className="text-black text-4xl sm:text-4xl lg:text-4xl font-bold tracking-tight leading-tight">
@@ -35,7 +35,7 @@ export const HeroSection = () => {
                             {t.hero.subtitle}
                         </p>
 
-                        <div className="grid grid-cols-3 gap-5 pt-2 max-w-xl">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 pt-2 max-w-xl">
                             <FeatureCard
                                 icon={<Leaf className="w-8 h-8 text-black" />}
                                 title={t.hero.feature1Title}
@@ -54,18 +54,7 @@ export const HeroSection = () => {
                         </div>
                     </div>
 
-                    {/* SISI KANAN: Gambar / Produk */}
-                    {/* <div className="flex justify-center items-center">
-            <div className="w-full max-w-md aspect-4/3 rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-amber-950/10 flex items-center justify-center">
-              <img 
-                src={heroImg} 
-                alt="Bandeng Presto Sanjaya" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-              />
-            </div>
-          </div> */}
-
-                </div>
+                </FadeIn>
             </div>
         </section>
     );

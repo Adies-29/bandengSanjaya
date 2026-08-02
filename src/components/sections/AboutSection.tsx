@@ -4,6 +4,7 @@ import { STORE_CONFIG } from '../../data/config';
 import rumahImg from '../../assets/images/rumah.webp';
 import storeImg from '../../assets/images/store.webp';
 import { useLanguage } from '../../context/LanguageContext';
+import { FadeIn } from '../ui/FadeIn';
 
 export const AboutSection = () => {
   const { language } = useLanguage();
@@ -21,9 +22,9 @@ export const AboutSection = () => {
   return (
     <section id="tentang" className="py-20 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+        <FadeIn className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           
-          {/* SISI KIRI: SLIDER GAMBAR OTOMATIS */}
+         
           <div className="flex justify-start w-full">
             <div className="relative w-full h-100 sm:h-115 rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-100 group">
               {images.map((img, index) => (
@@ -37,7 +38,6 @@ export const AboutSection = () => {
                 />
               ))}
 
-              {/* Indikator Titik-Titik di Bawah Gambar */}
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {images.map((_, index) => (
                   <button
@@ -53,7 +53,6 @@ export const AboutSection = () => {
             </div>
           </div>
 
-          {/* SISI KANAN: TULISAN */}
           <div className="text-left space-y-8">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1">
@@ -89,7 +88,7 @@ export const AboutSection = () => {
             )}
           </div>
 
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
