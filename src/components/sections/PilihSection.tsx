@@ -10,6 +10,7 @@ import bandeng2Img from '../../assets/images/bandeng 2.webp';
 import bandeng3Img from '../../assets/images/bandeng-presto-5.png';
 import storeImg from '../../assets/images/store.webp';
 import { useLanguage } from '../../context/LanguageContext';
+import { FadeIn } from '../ui/FadeIn';
 
 export const PilihSection = () => {
   const { t } = useLanguage();
@@ -28,9 +29,8 @@ export const PilihSection = () => {
 
   return (
     <section id="pilih-kami" className="py-20 text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+      <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
 
-        {/* Header Judul & Deskripsi */}
         <div className="space-y-2">
           <h2 className="text-2xl sm:text-3xl font-bold text-black">
             {t.whyUs.title}
@@ -40,10 +40,7 @@ export const PilihSection = () => {
           </p>
         </div>
 
-        {/* Grid 3 Kolom (Disamakan tingginya dengan items-stretch) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-
-          {/* SISI KIRI: 3 FeatureCard */}
           <div className="flex flex-col justify-between space-y-4">
             <FeatureCard
               icon={<Flame className="w-8 h-8 text-black" />}
@@ -62,7 +59,6 @@ export const PilihSection = () => {
             />
           </div>
 
-          {/* SISI TENGAH: SLIDER GAMBAR PRODUK OTOMATIS (Tinggi seimbang 100% dengan 3 kartu) */}
           <div className="flex justify-center items-center h-full min-h-110">
             <div className="relative w-full max-w-sm h-full min-h-110 rounded-3xl overflow-hidden shadow-xl border border-gray-100 group">
               {productImages.map((img, index) => (
@@ -78,7 +74,6 @@ export const PilihSection = () => {
                 />
               ))}
 
-              {/* Indikator Titik-Titik di Bawah Gambar */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {productImages.map((_, index) => (
                   <button
@@ -93,7 +88,7 @@ export const PilihSection = () => {
             </div>
           </div>
 
-          {/* SISI KANAN: 3 FeatureCard */}
+
           <div className="flex flex-col justify-between space-y-4">
             <FeatureCard
               icon={<PackageCheck className="w-8 h-8 text-black" />}
@@ -114,7 +109,7 @@ export const PilihSection = () => {
 
         </div>
 
-      </div>
+      </FadeIn>
     </section>
   );
 };

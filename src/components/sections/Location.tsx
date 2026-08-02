@@ -1,17 +1,16 @@
 
 import React, { useState } from 'react';
-import { MapPin, Phone, Send, Lock, MessageCircle } from 'lucide-react';
+import { MapPin, Phone,  Lock, MessageCircle } from 'lucide-react';
 import { STORE_CONFIG } from '../../data/config';
 import { whatsappLink } from '../../utils/format';
 import { Input, Textarea } from '../ui/Input';
 import { useLanguage } from '../../context/LanguageContext';
+import { FadeIn } from '../ui/FadeIn';
 
 export const LocationSection = () => {
   const { t } = useLanguage();
-  // Ambil Web3Forms Access Key dari file .env (tanpa hardcode di file komponen)
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-  // Form otomatis terkunci jika Access Key belum diisi di file .env
   const isFormLocked = !accessKey || accessKey.trim() === '';
 
   const embedMapUrl = `https://maps.google.com/maps?q=Bandeng+Presto+Sanjaya,+Jl.+Pucang+Sari+III+No.30,+Demak&hl=id&z=16&output=embed`;
@@ -46,7 +45,7 @@ export const LocationSection = () => {
       if (data.success) {
         setSubmitStatus({
           type: 'success',
-          message: 'Terima kasih! Pesan Anda telah berhasil terkirim.'
+          message: 'Pesan Anda berhasil terkirim! Kami akan segera menghubungi Anda.'
         });
         form.reset();
       } else {
@@ -67,7 +66,7 @@ export const LocationSection = () => {
 
   return (
     <section id="lokasi" className="py-20 text-black bg-gray-50/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
     
         <div className="space-y-8 text-center">
@@ -88,22 +87,18 @@ export const LocationSection = () => {
           </div>
         </div>
 
-        {/* ================= 2. KONTAK & FORM KIRIM PESAN ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-4">
           
-          {/* SISI KIRI: INFORMASI KONTAK (Col 5) */}
           <div className="lg:col-span-5 space-y-8 text-left">
             <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight">
               {t.location.contactInfo}
             </h3>
 
-            {/* Kantor / Toko Utama */}
             <div className="space-y-5">
               <h4 className="font-bold text-gray-900 text-lg">
                 {t.location.storeTitle}
               </h4>
 
-              {/* Alamat */}
               <div className="flex items-start gap-3.5 text-gray-700">
                 <MapPin className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base leading-relaxed">
@@ -111,7 +106,6 @@ export const LocationSection = () => {
                 </span>
               </div>
 
-              {/* Telepon / WA */}
               <div className="flex items-center gap-3.5 text-gray-700">
                 <Phone className="w-5 h-5 text-emerald-600 shrink-0" />
                 <span className="text-sm sm:text-base font-semibold">
@@ -128,13 +122,13 @@ export const LocationSection = () => {
               </div> */}
             </div>
 
-            {/* Tombol Langsung Buka Google Maps */}
+            
             <div className="pt-2">
               <a
                 href={STORE_CONFIG.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-800 text-white font-semibold px-6 py-3.5 rounded-xl shadow-md transition-all duration-300"
               >
                 <MapPin className="w-5 h-5" />
                 <span>{t.location.directions}</span>
@@ -143,10 +137,8 @@ export const LocationSection = () => {
 
           </div>
 
-          {/* SISI KANAN: FORM KIRIMKAN KAMI PESAN (Col 7) */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-100 text-left relative overflow-hidden">
             
-            {/* VISUAL OVERLAY TERKUNCI */}
             {isFormLocked && (
               <div className="absolute inset-0 bg-white/85 backdrop-blur-[3px] z-20 flex flex-col items-center justify-center p-6 text-center space-y-4">
                 <div className="w-14 h-14 bg-amber-100 border border-amber-200 text-amber-800 rounded-full flex items-center justify-center shadow-md">
@@ -173,7 +165,7 @@ export const LocationSection = () => {
             )}
 
             <div className={isFormLocked ? "opacity-30 pointer-events-none select-none" : ""}>
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t.location.sendMessage}
               </h3>
 
@@ -229,9 +221,8 @@ export const LocationSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center justify-center gap-2 bg-[#1e1e1e] hover:bg-black disabled:bg-gray-400 text-white font-bold px-8 py-3.5 rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#1e1e1e] hover:bg-black disabled:bg-gray-400 text-white font-semibold px-8 py-3.5 rounded-xl uppercase tracking-wider text-xs transition-all duration-300 shadow-lg cursor-pointer"
                   >
-                    <Send className="w-4 h-4" />
                     <span>{isSubmitting ? t.location.formSending : t.location.formSubmit}</span>
                   </button>
                 </div>
@@ -241,7 +232,7 @@ export const LocationSection = () => {
 
         </div>
 
-      </div>
+      </FadeIn>
     </section>
   );
 };

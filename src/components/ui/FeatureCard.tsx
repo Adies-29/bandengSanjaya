@@ -17,7 +17,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-[#f4fdec] rounded-2xl p-5 flex flex-col items-start justify-start text-left shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ${className}`}
+      className={`bg-[#f4fdec] rounded-2xl p-5 flex flex-col items-start justify-start text-left shadow-sm hover:shadow-md hover-shake transition-all duration-300 ${className}`}
     >
       {/* Top Icon or Image */}
       {iconSrc ? (

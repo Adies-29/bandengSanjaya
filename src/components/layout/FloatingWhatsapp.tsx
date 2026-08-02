@@ -1,4 +1,3 @@
-import { MessageCircle } from 'lucide-react';
 import { whatsappLink } from '../../utils/format';
 
 export const FloatingWhatsapp = () => {
@@ -7,10 +6,14 @@ export const FloatingWhatsapp = () => {
       href={whatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
+      className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group"
       aria-label="Chat WhatsApp"
     >
-      <MessageCircle className="w-8 h-8" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" className="shrink-0">
+        <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.703,5.084,27.5,5.086,24.179C5.093,13.73,13.624,5.201,24.072,5.201c5.064,0.002,9.823,1.974,13.404,5.558c3.582,3.584,5.551,8.344,5.55,13.408C43.017,34.617,34.486,43.146,24.038,43.146c-3.191,0-6.315-0.806-9.081-2.339L4.868,43.303z"/>
+        <path fill="#25D366" d="M24.072,6.701c-9.638,0-17.478,7.84-17.485,17.478c-0.002,3.109,0.812,6.142,2.355,8.811l0.366,0.635l-1.597,5.834l5.968-1.564l0.617,0.366c2.585,1.534,5.539,2.344,8.552,2.346h0.008c9.637,0,17.477-7.84,17.484-17.479c0.003-4.669-1.813-9.06-5.116-12.363C33.123,8.522,28.735,6.703,24.072,6.701z"/>
+        <path fill="#fff" fillRule="evenodd" clipRule="evenodd" d="M18.175,13.916c-0.378-0.84-0.776-0.857-1.136-0.871c-0.294-0.012-0.631-0.012-0.967-0.012c-0.337,0-0.884,0.126-1.347,0.631c-0.463,0.505-1.769,1.727-1.769,4.212c0,2.485,1.811,4.887,2.064,5.223c0.252,0.336,3.504,5.589,8.625,7.606c4.256,1.677,5.122,1.343,6.048,1.258c0.926-0.084,2.989-1.221,3.41-2.4c0.421-1.179,0.421-2.189,0.295-2.4c-0.126-0.211-0.463-0.337-0.968-0.589c-0.505-0.252-2.989-1.474-3.452-1.643c-0.463-0.168-0.8-0.252-1.137,0.252c-0.337,0.505-1.305,1.643-1.6,1.979c-0.295,0.336-0.589,0.378-1.094,0.126c-0.505-0.252-2.134-0.786-4.065-2.508c-1.503-1.34-2.518-2.996-2.813-3.501c-0.294-0.505-0.031-0.778,0.221-1.029c0.227-0.226,0.505-0.589,0.757-0.884c0.252-0.295,0.336-0.505,0.505-0.842c0.168-0.337,0.084-0.631-0.042-0.884C19.984,18.423,18.618,14.901,18.175,13.916z"/>
+      </svg>
       {/* Tooltip teks saaat kursor diarahkan */}
       <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-sm font-bold pl-0 group-hover:pl-2">
         Pesan via WA
