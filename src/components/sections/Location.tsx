@@ -65,8 +65,31 @@ export const LocationSection = () => {
   };
 
   return (
-    <section id="lokasi" className="py-20 text-black bg-gray-50/50">
-      <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section id="lokasi" className="py-20 text-black bg-[#F2F1EC] relative overflow-hidden">
+      {/* Background Wave Accent (Atas Menghadap Bawah, Bawah Menghadap Atas) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Wave Atas (Menghadap ke Bawah) */}
+        <svg
+          className="absolute -top-1 left-0 w-full h-40 sm:h-60 text-[#E5E0D2] opacity-70 rotate-180"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          fill="currentColor"
+        >
+          <path d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,181.3C960,182,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
+        </svg>
+
+        {/* Wave Bawah (Menghadap ke Atas) */}
+        <svg
+          className="absolute -bottom-1 left-0 w-full h-40 sm:h-60 text-[#E5E0D2] opacity-70"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          fill="currentColor"
+        >
+          <path d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,181.3C960,182,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
+        </svg>
+      </div>
+
+      <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         
     
         <div className="space-y-8 text-center">

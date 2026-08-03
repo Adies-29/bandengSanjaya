@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import logoImg from '../../assets/images/BANDENG.png';
+import logoImg from '../../assets/images/BANDENG.webp';
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -96,7 +96,6 @@ export const Navbar = () => {
                                 })}
                             </nav>
 
-                            {/* Dropdown Language Switcher (Desktop) */}
                             <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -111,7 +110,6 @@ export const Navbar = () => {
                                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
                                 </button>
 
-                                {/* Dropdown Menu Floating Card */}
                                 {langDropdownOpen && (
                                     <div className="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-100 rounded-2xl shadow-xl p-1.5 z-50 text-left animate-in fade-in zoom-in-95 duration-150">
                                         <button
@@ -229,7 +227,7 @@ export const Navbar = () => {
                         <X className="w-6 h-6" />
                     </button>
                 </div>
-                
+
                 <div className="mt-4 flex items-center justify-between bg-white/70 p-2 rounded-2xl border border-black/10">
                     <span className="text-xs font-bold text-gray-700 pl-2">Bahasa:</span>
                     <div className="flex items-center gap-1">
