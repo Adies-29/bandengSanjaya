@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { FadeIn } from '../ui/FadeIn';
 
-import bandengImg from '../../assets/images/ikan no bg.png';
-import boxImg from '../../assets/images/BOXnoBg.png'
-import pepesImg from '../../assets/images/pepess.png';
-import ayam1Img from '../../assets/images/ayamNoBg.png';
-import bandeng2Img from '../../assets/images/ikanBox.png';
-import bandeng3Img from '../../assets/images/ikannn.png';
+import bandengImg from '../../assets/images/ikan no bg.webp';
+import boxImg from '../../assets/images/BOXnoBg.webp';
+import pepesImg from '../../assets/images/pepess.webp';
+import ayam1Img from '../../assets/images/ayamNoBg.webp';
+import bandeng2Img from '../../assets/images/ikanBox.webp';
+import bandeng3Img from '../../assets/images/ikannn.webp';
+import orangbox from '../../assets/images/orangBox.webp';
 
 export const HeroSection = () => {
     const { t } = useLanguage();
-    const heroImages = [bandengImg, boxImg, bandeng2Img, bandeng3Img ,ayam1Img, pepesImg,  ];
+    const heroImages = [bandengImg, boxImg, bandeng2Img, bandeng3Img ,ayam1Img, pepesImg, orangbox];
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Timer berganti foto otomatis tiap 3.5 detik
@@ -26,17 +27,30 @@ export const HeroSection = () => {
     return (
         <section
             id="beranda"
-            className="relative min-h-screen flex items-center justify-center bg-cover bg-center text-black pt-24 pb-16 overflow-hidden"
+            className="relative min-h-screen flex items-center justify-center bg-cover bg-center text-black pt-24 pb-16 overflow-hidden bg-[#F2F1EC]"
         >
-            <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] z-0 pointer-events-none">
+            
+            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+
                 <svg
-                    className="w-full h-full text-white"
-                    viewBox="0 0 800 900"
+                    className="absolute top-0 left-0 w-full h-28 sm:h-52 lg:h-72 text-[#EBE5D6]"
+                    viewBox="0 0 1440 320"
                     preserveAspectRatio="none"
                     fill="currentColor"
                 >
-                    <path d="M 0 0 L 680 0 Q 780 250 560 480 T 680 900 L 0 900 Z" />
+                    <path d="M0,0 L1440,0 L1440,120 C1200,20 960,160 720,120 C480,20 240,40 0,160 Z" />
                 </svg>
+
+                {/* Wave 2: Melengkung Ke Atas (Dari Bawah Kiri ke Kanan) */}
+                <svg
+                    className="absolute bottom-0 left-0 w-full h-28 sm:h-52 lg:h-72 text-[#EBE5D6]"
+                    viewBox="0 0 1440 320"
+                    preserveAspectRatio="none"
+                    fill="currentColor"
+                >
+                    <path d="M0,320 L1440,320 L1440,160 C1120,210 800,120 480,190 C300,230 150,180 0,160 Z" />
+                </svg>
+
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -79,7 +93,7 @@ export const HeroSection = () => {
                                         key={index}
                                         onClick={() => setCurrentIndex(index)}
                                         className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                                            index === currentIndex ? "bg-amber-700 w-6" : "bg-black/20 w-2 hover:bg-black/40"
+                                            index === currentIndex ? "bg-[#E9C176] w-6" : "bg-black/20 w-2 hover:bg-black/40"
                                         }`}
                                         aria-label={`Pindah ke slide ${index + 1}`}
                                     />

@@ -1,4 +1,4 @@
-import logoImg from '../../assets/images/BANDENGPutih.png';
+import logoImg from '../../assets/images/BANDENGPutih.webp';
 import halalIcon from '../../assets/icons/halal.svg';
 import { STORE_CONFIG } from '../../data/config';
 import { MapPin } from 'lucide-react';

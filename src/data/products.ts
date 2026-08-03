@@ -1,8 +1,8 @@
 import type { Product } from "../types";
-import bandeng5Img from '../assets/images/bandeng-presto-5.png';
-import bandengImg from '../assets/images/bandeng-presto.png';
-import pepesImg from '../assets/images/pepes-bandeng.png';
-import ayamUngkepImg from '../assets/images/Ayam-ungkep.png';
+import bandeng5Img from '../assets/images/bandeng-presto-5.webp';
+import bandengImg from '../assets/images/bandeng-presto.webp';
+import pepesImg from '../assets/images/pepes-bandeng.webp';
+import ayamUngkepImg from '../assets/images/Ayam-ungkep.webp';
 
 export const PRODUCTS: Product[] = [
     {
@@ -59,6 +59,6 @@ export const PRODUCTS: Product[] = [
         unit: '1 Ekor Utuh',
         unitEn: '1 Whole Chicken',
         isBestSeller: true,
-        paxelUrl: "https://buyer.paxelmarket.co/product/PRD1JJ92UD8T/PRD1JJ92UD8T"
+        paxelUrl: "https://buyer.paxelmarket.co/product/PRD1JJ92UU31/PRD1JJ92UU31"
     },
 ];

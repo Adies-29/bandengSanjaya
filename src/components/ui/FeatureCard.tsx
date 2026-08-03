@@ -6,6 +6,7 @@ export interface FeatureCardProps {
   title: string;
   subtitle?: string;
   className?: string;
+  variant?: 'cream' | 'green';
 }
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({
@@ -14,31 +15,44 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
   subtitle,
   className = '',
+  variant = 'cream',
 }) => {
+  const isGreen = variant === 'green';
+
   return (
     <div
-      className={`bg-[#f4fdec] rounded-2xl p-5 flex flex-col items-start justify-start text-left shadow-sm hover:shadow-md hover-shake transition-all duration-300 ${className}`}
+      className={`p-7 rounded-3xl text-left shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group ${
+        isGreen
+          ? 'bg-[#003825] text-white'
+          : 'bg-[#FFEFD7] text-[#003825]'
+      } ${className}`}
     >
       {/* Top Icon or Image */}
       {iconSrc ? (
-        <img src={iconSrc} alt={title} className="w-10 h-10 mb-3 object-contain" />
+        <img src={iconSrc} alt={title} className="w-12 h-12 mb-5 object-contain" />
       ) : icon ? (
-        <div className="mb-3 text-emerald-950 flex items-center justify-start">
+        <div
+          className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform ${
+            isGreen ? 'bg-white/10 text-amber-300' : 'bg-amber-200/70 text-[#003825]'
+          }`}
+        >
           {icon}
         </div>
       ) : null}
 
-      {/* Title */}
-      <h3 className="text-lg sm:text-xl font-bold text-black tracking-tight">
-        {title}
-      </h3>
+      <div>
+        {/* Title */}
+        <h3 className={`text-xl font-bold mb-2 ${isGreen ? 'text-white' : 'text-[#003825]'}`}>
+          {title}
+        </h3>
 
-      {/* Subtitle / Description */}
-      {subtitle && (
-        <p className="text-sm font-normal text-gray-800 mt-2 leading-relaxed">
-          {subtitle}
-        </p>
-      )}
+        {/* Subtitle / Description */}
+        {subtitle && (
+          <p className={`text-sm leading-relaxed ${isGreen ? 'text-amber-100/90' : 'text-gray-700'}`}>
+            {subtitle}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
