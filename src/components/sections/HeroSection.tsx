@@ -1,10 +1,27 @@
-import { Leaf, ShieldCheck, Zap } from 'lucide-react';
-import { FeatureCard } from '../ui/FeatureCard';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { FadeIn } from '../ui/FadeIn';
 
+import bandengImg from '../../assets/images/ikan no bg.png';
+import boxImg from '../../assets/images/BOXnoBg.png'
+import pepesImg from '../../assets/images/pepess.png';
+import ayam1Img from '../../assets/images/ayamNoBg.png';
+import bandeng2Img from '../../assets/images/ikanBox.png';
+import bandeng3Img from '../../assets/images/ikannn.png';
+
 export const HeroSection = () => {
     const { t } = useLanguage();
+    const heroImages = [bandengImg, boxImg, bandeng2Img, bandeng3Img ,ayam1Img, pepesImg,  ];
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Timer berganti foto otomatis tiap 3.5 detik
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+        }, 3500);
+
+        return () => clearInterval(timer);
+    }, [heroImages.length]);
 
     return (
         <section
@@ -26,7 +43,7 @@ export const HeroSection = () => {
                 <FadeIn className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <div className="space-y-6 text-left">
-                        <h1 className="text-black text-4xl sm:text-4xl lg:text-4xl font-bold tracking-tight leading-tight">
+                        <h1 className="text-black text-4xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
                             {t.hero.title1} <br />
                             <span className="text-black">{t.hero.title2}</span>
                         </h1>
@@ -34,23 +51,40 @@ export const HeroSection = () => {
                         <p className="text-gray-800 text-sm sm:text-md leading-relaxed max-w-xl">
                             {t.hero.subtitle}
                         </p>
+                    </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 pt-2 max-w-xl">
-                            <FeatureCard
-                                icon={<Leaf className="w-8 h-8 text-black" />}
-                                title={t.hero.feature1Title}
-                                subtitle={t.hero.feature1Sub}
-                            />
-                            <FeatureCard
-                                icon={<ShieldCheck className="w-8 h-8 text-black" />}
-                                title={t.hero.feature2Title}
-                                subtitle={t.hero.feature2Sub}
-                            />
-                            <FeatureCard
-                                icon={<Zap className="w-8 h-8 text-black" />}
-                                title={t.hero.feature3Title}
-                                subtitle={t.hero.feature3Sub}
-                            />
+                    <div className="relative flex justify-center items-center py-6 group">
+                 
+                        <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full opacity-40 bg-[#FFEFD7] shadow-inner transition-transform duration-700" />
+
+                        <div className="relative z-10 w-full max-w-md sm:max-w-xl h-80 sm:h-110 flex items-center justify-center">
+                            {heroImages.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    alt={`Bandeng Presto Sanjaya ${index + 1}`}
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    decoding="async"
+                                    className={`absolute inset-0 w-full h-full object-contain drop-shadow-xl transition-all duration-1000 ease-in-out ${
+                                        index === currentIndex
+                                            ? "opacity-100 scale-100 z-10"
+                                            : "opacity-0 scale-95 z-0 pointer-events-none"
+                                    }`}
+                                />
+                            ))}
+
+                            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                                {heroImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                                            index === currentIndex ? "bg-amber-700 w-6" : "bg-black/20 w-2 hover:bg-black/40"
+                                        }`}
+                                        aria-label={`Pindah ke slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
 

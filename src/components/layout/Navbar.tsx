@@ -64,7 +64,7 @@ export const Navbar = () => {
             <header
                 className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
                     scrolled
-                        ? "bg-[#ecffdb]/90 backdrop-blur-md text-black shadow-lg"
+                        ? "bg-[#FFEFD7]/90 backdrop-blur-md text-black shadow-lg"
                         : "bg-transparent text-black shadow-none"
                 }`}
             >
@@ -72,7 +72,7 @@ export const Navbar = () => {
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <a href="#beranda" className="flex items-center gap-2 group">
-                            <img src={logoImg} alt="Logo Bandeng Sanjaya" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
+                            <img src={logoImg} alt="Logo Bandeng Sanjaya" loading="eager" decoding="async" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
                         </a>
 
                         <div className="hidden md:flex items-center gap-8">
@@ -209,19 +209,16 @@ export const Navbar = () => {
                 </div>
             </header>
 
-            {/* Backdrop Layer */}
             <div
                 className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-50 md:hidden transition-opacity duration-300 ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                     }`}
                 onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Sidebar Drawer Panel */}
             <div
-                className={`fixed top-0 right-0 bottom-0 w-72 bg-[#ecffdb] z-60 md:hidden shadow-2xl transition-transform duration-300 ease-in-out p-6 flex flex-col ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed top-0 right-0 bottom-0 w-72 bg-[#FFEFD7] z-60 md:hidden shadow-2xl transition-transform duration-300 ease-in-out p-6 flex flex-col ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
-                {/* Header Sidebar Drawer */}
                 <div className="flex items-center justify-between pb-4 border-b border-black/10">
                     <span className="font-bold text-black text-lg">Menu</span>
                     <button
@@ -232,8 +229,7 @@ export const Navbar = () => {
                         <X className="w-6 h-6" />
                     </button>
                 </div>
-
-                {/* Language Selector inside Drawer */}
+                
                 <div className="mt-4 flex items-center justify-between bg-white/70 p-2 rounded-2xl border border-black/10">
                     <span className="text-xs font-bold text-gray-700 pl-2">Bahasa:</span>
                     <div className="flex items-center gap-1">
