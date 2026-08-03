@@ -37,3 +37,27 @@ body {
 .hover-shake:hover {
   animation: shake 0.4s ease-in-out forwards;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.text-stroke-custom {
+  -webkit-text-stroke: 2px rgba(0, 56, 37, 0.35);
+  color: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
