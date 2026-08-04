@@ -95,15 +95,17 @@ export const PilihSection = () => {
               />
             ))}
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 z-20">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20">
               {productImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${index === currentIndex ? "bg-[#E9C176] w-6" : "bg-white/70 w-2.5"
-                    }`}
+                  className="p-2 cursor-pointer flex items-center justify-center"
                   aria-label={`Go to slide ${index + 1}`}
-                />
+                >
+                  <span className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-[#E9C176] w-6" : "bg-white/70 w-2.5"
+                    }`} />
+                </button>
               ))}
             </div>
           </div>
