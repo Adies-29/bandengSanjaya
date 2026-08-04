@@ -60,7 +60,9 @@ export const ProductsSection = () => {
   const handleOrderWhatsapp = (product: Product) => {
     const productName = product.name;
     const productUnit = language === 'en' && product.unitEn ? product.unitEn : product.unit;
-    const message = `Halo *${STORE_CONFIG.name}*,\nSaya ingin menanyakan informasi promo/harga & pemesanan produk:\n- *${productName}* (${productUnit})\n\nApakah stok produk ini ready?`;
+    const message = language === 'en'
+      ? `Halo ${STORE_CONFIG.name},\n\nI would like to inquire about the product:\n• ${productName} (${productUnit})\n\nIs this product currently available?`
+      : `Halo ${STORE_CONFIG.name},\n\nSaya ingin menanyakan stok untuk produk:\n• ${productName} (${productUnit})\n\nApakah stok produk ini ready?`;
     const waUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(waUrl, '_blank');
   };

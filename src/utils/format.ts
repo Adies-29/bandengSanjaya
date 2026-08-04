@@ -9,9 +9,9 @@ export const formatIDR = (price: number): string => {
 };
 
 export const whatsappLink = (productName?: string): string => {
-    let message = `Halo ${STORE_CONFIG.name}, saya mau tanya produknya.`;
+    let message = `Halo ${STORE_CONFIG.name}, saya ingin menanyakan informasi produk.`;
     if (productName) {
-        message = `Halo ${STORE_CONFIG.name}, saya mau pesan *${productName}*. Apakah masih tersedia?`
+        message = `Halo ${STORE_CONFIG.name},\n\nSaya ingin bertanya stok untuk produk:\n• ${productName}\n\nApakah produk ini ready?`;
     }
     return `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 };
