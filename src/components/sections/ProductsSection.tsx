@@ -101,9 +101,7 @@ export const ProductsSection = () => {
 
   return (
     <section id="produk" className="py-20 bg-white text-black overflow-hidden relative">
-      {/* Background Wave Accent */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Wave 1: Atas (Responsive Mobile & Desktop) */}
         <svg
           className="absolute top-0 left-0 w-full h-24 sm:h-48 lg:h-64 text-[#EBE5D6]"
           viewBox="0 0 1440 320"
@@ -113,7 +111,6 @@ export const ProductsSection = () => {
           <path d="M0,0 L1440,0 L1440,120 C1200,220 960,260 720,140 C480,20 240,40 0,160 Z" />
         </svg>
 
-        {/* Wave 2: Bawah (Responsive Mobile & Desktop) */}
         <svg
           className="absolute bottom-0 left-0 w-full h-24 sm:h-48 lg:h-64 text-[#EBE5D6]"
           viewBox="0 0 1440 320"
@@ -173,7 +170,6 @@ export const ProductsSection = () => {
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Kontainer Slider Kartu Produk dengan Drag Cursor */}
           <div
             ref={scrollRef}
             onScroll={updateActiveIndex}
@@ -292,7 +288,6 @@ export const ProductsSection = () => {
         </div>
       </FadeIn>
 
-      {/* Pita Running Text Full-Width (Melintas Penuh Layar Kiri ke Kanan Tanpa Terpotong) */}
       <div className="relative z-10 w-full bg-[#ffeaca] py-3.5 overflow-hidden mb-12 select-none shadow-xs">
         <div className="animate-marquee whitespace-nowrap font-bold text-sm sm:text-base uppercase tracking-widest text-[#003825]">
           <span>

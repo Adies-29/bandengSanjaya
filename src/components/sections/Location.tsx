@@ -31,8 +31,9 @@ export const LocationSection = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Memakai Access Key dari environment variable (.env)
     formData.append("access_key", accessKey);
+    formData.append("subject", "Pesan Baru dari Website Bandeng Sanjaya");
+    formData.append("from_name", "Website Bandeng Sanjaya");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -66,9 +67,7 @@ export const LocationSection = () => {
 
   return (
     <section id="lokasi" className="py-20 text-black bg-[#F2F1EC] relative overflow-hidden">
-      {/* Background Wave Accent (Atas Menghadap Bawah, Bawah Menghadap Atas) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Wave Atas (Menghadap ke Bawah) */}
         <svg
           className="absolute -top-1 left-0 w-full h-40 sm:h-60 text-[#E5E0D2] opacity-70 rotate-180"
           viewBox="0 0 1440 320"
@@ -78,7 +77,6 @@ export const LocationSection = () => {
           <path d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,181.3C960,182,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
         </svg>
 
-        {/* Wave Bawah (Menghadap ke Atas) */}
         <svg
           className="absolute -bottom-1 left-0 w-full h-40 sm:h-60 text-[#E5E0D2] opacity-70"
           viewBox="0 0 1440 320"
@@ -135,14 +133,6 @@ export const LocationSection = () => {
                   +{STORE_CONFIG.whatsappNumber}
                 </span>
               </div>
-
-              {/* Instagram
-              <div className="flex items-center gap-3.5 text-gray-700">
-                <Mail className="w-5 h-5 text-amber-600 shrink-0" />
-                <span className="text-sm sm:text-base font-medium">
-                  {STORE_CONFIG.socialMedia.instagram}
-                </span>
-              </div> */}
             </div>
 
             
@@ -193,7 +183,6 @@ export const LocationSection = () => {
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Alert Status Pengiriman */}
                 {submitStatus.type && (
                   <div
                     className={`p-4 rounded-xl text-sm font-semibold border ${
@@ -215,7 +204,6 @@ export const LocationSection = () => {
                     placeholder={t.location.formName}
                   />
 
-                  {/* Input No HP */}
                   <Input
                     type="text"
                     name="phone"
@@ -224,14 +212,12 @@ export const LocationSection = () => {
                   />
                 </div>
 
-                {/* Input Subjek */}
                 <Input
                   type="text"
                   name="subject"
                   placeholder={t.location.formSubject}
                 />
 
-                {/* Input Pesan */}
                 <Textarea
                   name="message"
                   rows={4}
@@ -239,7 +225,6 @@ export const LocationSection = () => {
                   placeholder={t.location.formMessage}
                 />
 
-                {/* Submit Button */}
                 <div>
                   <button
                     type="submit"

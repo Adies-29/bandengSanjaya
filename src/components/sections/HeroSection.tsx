@@ -14,7 +14,6 @@ export const HeroSection = () => {
     const heroImages = [bandengImg, boxImg, bandeng2Img, bandeng3Img ,ayam1Img, pepesImg, orangbox];
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Timer berganti foto otomatis tiap 3.5 detik
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
@@ -40,7 +39,6 @@ export const HeroSection = () => {
                     <path d="M0,0 L1440,0 L1440,120 C1200,20 960,160 720,120 C480,20 240,40 0,160 Z" />
                 </svg>
 
-                {/* Wave 2: Melengkung Ke Atas (Dari Bawah Kiri ke Kanan) */}
                 <svg
                     className="absolute bottom-0 left-0 w-full h-28 sm:h-52 lg:h-72 text-[#EBE5D6]"
                     viewBox="0 0 1440 320"

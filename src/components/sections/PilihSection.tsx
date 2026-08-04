@@ -52,7 +52,6 @@ export const PilihSection = () => {
 
       <FadeIn className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
 
-        {/* Header Section */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-4xl font-bold text-black tracking-tight">
             {t.whyUs.title}
@@ -84,7 +83,7 @@ export const PilihSection = () => {
               <img
                 key={index}
                 src={img}
-                alt={`Produk ${index + 1}`}
+                alt={`Olahan Bandeng Presto Sanjaya Khas Demak ${index + 1}`}
                 width={640}
                 height={550}
                 loading="lazy"

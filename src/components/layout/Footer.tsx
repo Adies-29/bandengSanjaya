@@ -13,7 +13,6 @@ export const Footer = () => {
     <footer className="bg-[#003825] text-white pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-        {/* Main Footer Content */}
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
 
           <div className="col-span-2 lg:col-span-4 space-y-3.5 text-left">

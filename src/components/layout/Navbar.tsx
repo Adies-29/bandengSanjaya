@@ -9,6 +9,7 @@ export const Navbar = () => {
     const [activeSection, setActiveSection] = useState("");
     const [langDropdownOpen, setLangDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const mobileDropdownRef = useRef<HTMLDivElement>(null);
     const { language, setLanguage, t } = useLanguage();
 
     const navLinks = [
@@ -18,16 +19,23 @@ export const Navbar = () => {
         { name: t.nav.location, href: '#lokasi' },
     ];
 
-    // Klik di luar dropdown untuk menutup dropdown
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+            const target = event.target as Node;
+            const isOutsideDesktop = !dropdownRef.current || !dropdownRef.current.contains(target);
+            const isOutsideMobile = !mobileDropdownRef.current || !mobileDropdownRef.current.contains(target);
+
+            if (isOutsideDesktop && isOutsideMobile) {
                 setLangDropdownOpen(false);
             }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('touchstart', handleClickOutside);
+        };
     }, []);
 
     useEffect(() => {
@@ -38,7 +46,7 @@ export const Navbar = () => {
                 setScrolled(false);
             }
 
-            // Deteksi section mana yang sedang aktif saat di-scroll
+
             const scrollPosition = window.scrollY + 120;
             for (const link of navLinks) {
                 const section = document.querySelector(link.href) as HTMLElement | null;
@@ -70,7 +78,6 @@ export const Navbar = () => {
             >
                 <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
-                        {/* Logo */}
                         <a href="#beranda" className="flex items-center gap-2 group">
                             <img
                                 src={logoImg}
@@ -113,7 +120,7 @@ export const Navbar = () => {
                                 >
                                     <img
                                         src={language === 'id' ? "https://flagcdn.com/w40/id.png" : "https://flagcdn.com/w40/us.png"}
-                                        alt={language}
+                                        alt={language === 'id' ? 'Bahasa Indonesia' : 'English'}
                                         className="w-4 h-3 object-cover rounded-xs shadow-2xs shrink-0"
                                     />
                                     <span>{language.toUpperCase()}</span>
@@ -156,17 +163,15 @@ export const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center gap-2">
-                            {/* Mobile Dropdown Language Switcher */}
-                            <div className="relative">
+                            <div className="relative" ref={mobileDropdownRef}>
                                 <button
                                     onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                                     className="flex items-center gap-1 border border-black/30 rounded-full px-2 py-1 text-[11px] font-bold text-black bg-white/90 shadow-2xs"
                                 >
                                     <img
                                         src={language === 'id' ? "https://flagcdn.com/w40/id.png" : "https://flagcdn.com/w40/us.png"}
-                                        alt={language}
+                                        alt={language === 'id' ? 'Bahasa Indonesia' : 'English'}
                                         className="w-3.5 h-2.5 object-cover rounded-xs shrink-0"
                                     />
                                     <span>{language.toUpperCase()}</span>

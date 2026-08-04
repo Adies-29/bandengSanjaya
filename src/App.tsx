@@ -18,22 +18,13 @@ function App() {
         <Navbar />
 
         <main className="grow">
-          {/* Banner Utama */}
           <HeroSection />
-          {/* Section Tentang Kami */}
           <AboutSection/>
-
           <PilihSection />
-          {/* Katalog Produk Menu */}
           <ProductsSection />
-
           <LocationSection/>
         </main>
-
-        {/* Footer Website */}
         <Footer />
-
-        {/* 3. Tombol WA Melayang di Kanan Bawah */}
         <FloatingWhatsapp />
       </div>
     </LanguageProvider>

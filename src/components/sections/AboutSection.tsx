@@ -79,7 +79,7 @@ export const AboutSection = () => {
                   <img
                     key={index}
                     src={img}
-                    alt={`Slide ${index + 1}`}
+                    alt={`Keunggulan & Dapur Olahan Bandeng Presto Sanjaya ${index + 1}`}
                     width={640}
                     height={460}
                     loading="lazy"
