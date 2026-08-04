@@ -72,7 +72,7 @@ export const Navbar = () => {
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <a href="#beranda" className="flex items-center gap-2 group">
-                            <img src={logoImg} alt="Logo Bandeng Sanjaya" loading="eager" decoding="async" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
+                            <img src={logoImg} alt="Logo Bandeng Sanjaya" width={120} height={48} loading="eager" decoding="async" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
                         </a>
 
                         <div className="hidden md:flex items-center gap-8">

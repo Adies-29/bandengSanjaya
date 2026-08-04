@@ -77,8 +77,12 @@ export const HeroSection = () => {
                                     key={index}
                                     src={img}
                                     alt={`Bandeng Presto Sanjaya ${index + 1}`}
+                                    width={576}
+                                    height={440}
                                     loading={index === 0 ? "eager" : "lazy"}
-                                    decoding="async"
+                                    decoding={index === 0 ? "sync" : "async"}
+                                    // @ts-expect-error fetchpriority is a valid HTML attribute
+                                    fetchpriority={index === 0 ? "high" : "low"}
                                     className={`absolute inset-0 w-full h-full object-contain drop-shadow-xl transition-all duration-1000 ease-in-out ${
                                         index === currentIndex
                                             ? "opacity-100 scale-100 z-10"
