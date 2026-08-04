@@ -85,6 +85,8 @@ export const PilihSection = () => {
                 key={index}
                 src={img}
                 alt={`Produk ${index + 1}`}
+                width={640}
+                height={550}
                 loading="lazy"
                 decoding="async"
                 className={`absolute inset-0 w-full h-full object-cover ${img === storeImg ? 'object-left' : 'object-top'

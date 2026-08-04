@@ -80,6 +80,8 @@ export const AboutSection = () => {
                     key={index}
                     src={img}
                     alt={`Slide ${index + 1}`}
+                    width={640}
+                    height={460}
                     loading="lazy"
                     decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100 scale-105" : "opacity-0 scale-100"
