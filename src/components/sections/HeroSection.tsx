@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { FadeIn } from '../ui/FadeIn';
 
 import bandengImg from '../../assets/images/ikan no bg.webp';
 import boxImg from '../../assets/images/BOXnoBg.webp';
@@ -54,7 +53,7 @@ export const HeroSection = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <FadeIn className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <div className="space-y-6 text-left">
                         <h1 className="text-black text-4xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
@@ -81,7 +80,7 @@ export const HeroSection = () => {
                                     height={440}
                                     loading={index === 0 ? "eager" : "lazy"}
                                     decoding={index === 0 ? "sync" : "async"}
-                                    // @ts-expect-error fetchpriority is a valid HTML attribute
+                                    // @ts-ignore
                                     fetchpriority={index === 0 ? "high" : "low"}
                                     className={`absolute inset-0 w-full h-full object-contain drop-shadow-xl transition-all duration-1000 ease-in-out ${
                                         index === currentIndex
@@ -108,7 +107,7 @@ export const HeroSection = () => {
                         </div>
                     </div>
 
-                </FadeIn>
+                </div>
             </div>
         </section>
     );
