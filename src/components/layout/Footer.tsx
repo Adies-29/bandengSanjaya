@@ -14,16 +14,18 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
 
           <div className="col-span-2 lg:col-span-4 space-y-3.5 text-left">
-            <div className="flex items-center">
+            <div className="flex items-center justify-start">
               <img
                 src={logoImg}
                 alt={STORE_CONFIG.name}
+                width={180}
+                height={64}
                 loading="lazy"
                 decoding="async"
-                className="h-16 object-contain -mt-4"
+                className="h-14 sm:h-16 object-contain object-left -ml-2.5 lg:-ml-4 -mt-2 lg:-mt-3"
               />
             </div>
 
@@ -145,9 +147,9 @@ export const Footer = () => {
 
         </div>
 
-        <div className="text-center pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-white/50">
+        <div className="text-center pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-white/80">
           <p>© {currentYear} {STORE_CONFIG.name}. Website by Adies-29.</p>
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white/50">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold text-white/80">
             v{STORE_CONFIG.version}
           </span>
         </div>

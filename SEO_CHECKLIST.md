@@ -46,7 +46,7 @@ Dokumen ini berisi daftar tugas (task checklist) dan strategi Search Engine Opti
 - [ ] **Buat / Klaim Profil Google Bisnis (Google My Business)**
   - **Instruksi:** Buka [google.com/business](https://www.google.com/business/), daftarkan nama lokasi **Bandeng Presto Sanjaya**.
 - [ ] **Lengkapi Alamat, Jam Operasional & Link Web**
-  - **Instruksi:** Masukkan alamat *Jl. Pucang Sari III No.30, Demak*, nomor WhatsApp `+6281217627226`, dan tautkan URL website resmi ini.
+  - **Instruksi:** Masukkan alamat *Jl. Pucang Sari III No.30, Demak*, nomor WhatsApp `+62895360854413`, dan tautkan URL website resmi ini.
 - [ ] **Kumpulkan Ulasan Rating Bintang 5 (Google Reviews)**
   - **Instruksi:** Minta pelanggan/pembeli memberikan rating ulasan bintang 5 beserta foto produk di Google Maps.
 
